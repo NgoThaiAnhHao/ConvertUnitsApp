@@ -1,0 +1,151 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  max-width: 100dvw;
+  height: 100dvh;
+  position: relative;
+
+  font-size: 1.6rem;
+}
+
+.patrick-hand-regular {
+  font-family: "Patrick Hand", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.container {
+  border: 2px solid black;
+  box-shadow: 0.1px 0.1px 3px 1px black;
+
+  width: 50%;
+  height: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.result-value h2 {
+  font-size: 1.6rem;
+  color: red;
+}
+
+.section {
+  width: 100%;
+  height: 80%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  padding: 3rem 1rem 0 0;
+
+  border: 1px solid black;
+}
+
+.hidden {
+  display: none;
+}
+
+.unit-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  width: 50%;
+}
+
+.unit-options li {
+  cursor: pointer;
+  list-style: none;
+  font-weight: bold;
+}
+
+.unit-option.active span {
+  text-decoration: underline;
+  color: blue;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.unit-length-to-convert {
+  padding-left: 0.5rem;
+}
+
+input,
+select {
+  width: 25rem;
+  height: 3rem;
+  border: 1px solid black;
+  box-shadow: 0.1px 0.1px 0.5px 0.5px black;
+}
+
+select {
+  cursor: pointer;
+}
+
+.btn {
+  width: 10rem;
+  height: 3rem;
+  border-radius: 5px;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: 0.2s;
+  color:black;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: grey;
+  color: white;
+}
+
+@media only screen and (max-width: 1440px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  html {
+    font-size: 9px;
+  }
+
+  .unit-options,
+  .container {
+    width: 80%;
+  }
+}

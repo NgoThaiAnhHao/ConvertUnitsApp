@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/style.css}" />
+
+    <title>Unit Converter</title>
+  </head>
+  <body class="patrick-hand-regular">
+    <div class="container">
+      <!-- ================================ HEADER ================================-->
+      <header>
+        <h1 class="unit-title">Unit Converter</h1>
+
+        <ul class="unit-options">
+          <li class="unit-option" data-type="length" th:classappend="${type == 'length'} ? 'active'">
+            <span>Length</span>
+          </li>
+          <li class="unit-option" data-type="weight" th:classappend="${type == 'weight'} ? 'active'"><span>Weight</span></li>
+          <li class="unit-option" data-type="temperature"  th:classappend="${type == 'temperature'} ? 'active'">
+            <span>Temperature</span>
+          </li>
+        </ul>
+      </header>
+
+      <form class="section input-value" th:action="@{/convert}" th:if="${result == null}" method="post">
+
+        <input type="hidden" name="type" id="typeInput" th:value="${type != null ? type : 'length'}" />
+        <!-- ================================ INPUT VALUE ================================-->
+        <label>
+          Enter the value to convert
+          <input
+            type="number"
+            max="9999999999"
+            name="value"
+            class="unit-length-to-convert patrick-hand-regular"
+            th:value="${value}"
+            required
+          />
+        </label>
+
+        <!-- ================================ UNIT CONVERT FROM ================================-->
+        <label
+          >Unit to Convert from
+          <select name="from" class="unit-convert-from patrick-hand-regular">
+            <option
+                    th:each="unit : ${units}"
+                    th:value="${unit}"
+                    th:text="${unit}"
+                    th:selected="${unit == from}"
+                    class="unit-convert-from-option">
+
+            </option>
+          </select>
+        </label>
+
+        <!-- ================================ UNIT CONVERT TO ================================-->
+        <label
+          >Unit to Convert to
+          <select name="to" class="unit-convert-to patrick-hand-regular">
+            <option
+                    th:each="unit : ${units}"
+                    th:value="${unit}"
+                    th:text="${unit}"
+                    th:selected="${unit == to}"
+                    class="unit-convert-to-option">
+
+            </option>
+          </select>
+        </label>
+
+        <!-- ================================  CONVERT BUTTON ================================-->
+        <button type="submit" class="convert-btn btn patrick-hand-regular">
+          Convert
+        </button>
+      </form>
+
+      <section class="section result-value"  th:if="${result != null}">
+        <h1>Result of your calculation</h1>
+
+        <h2>
+          <span th:text="${value}"></span>
+          <span th:text="${from}"></span>
+          =
+          <span th:text="${result}"></span>
+          <span th:text="${to}"></span>
+        </h2>
+
+
+        <a th:href="
+          @{/(
+            value=${value},
+            from=${from},
+            to=${to},
+            type=${type}
+          )}" class="btn reset-btn">
+          Reset</a>
+      </section>
+    </div>
+
+    <script th:src="@{/script.js}"></script>
+  </body>
+</html>
