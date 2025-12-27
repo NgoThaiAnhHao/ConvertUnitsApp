@@ -63,8 +63,6 @@ header {
   text-align: center;
   gap: 2rem;
   padding: 3rem 1rem 0 0;
-
-  border: 1px solid black;
 }
 
 .hidden {
